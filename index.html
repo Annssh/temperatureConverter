@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tempearture Converter</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Poppins:ital,wght@0,500;1,500&display=swap');
+      body
+      {
+        background-color:antiquewhite;
+        padding: 50px 100px;
+        font-family: 'Oswald', sans-serif;
+        font-family: 'Poppins', sans-serif;
+      }
+      h1
+      {
+        text-align: center;
+
+      }
+      #container
+      {
+        text-align: center;
+        background-color: aquamarine;
+        padding: 50px;
+        border-style: solid;
+        border-width: 4px;
+        border-color: black;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+      .inputDiv
+      {
+        display: inline-block;
+        padding-bottom: 20px;
+      }
+      .inp
+      {
+        padding: 5px 10px;
+        margin: 10px;
+        font-size: 20px;
+        border-radius: 10px;
+        font-family: 'Oswald', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+
+      }
+      .inp:hover
+      {
+        -ms-transform: scale(1.1); 
+        transform: scale(1.1);
+        transition: 0.7s;
+        background-color: black;
+        color: wheat;
+      }
+      label
+      {
+        font-family: 'Oswald', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        font-size: 25px;
+      }
+      #equals
+      {
+        font-size: 30px;
+        font-weight: 900;
+      }
+      #formula
+      {
+        padding: 10px;
+        font-family: 'Oswald', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        background-color: rgb(53, 52, 52);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: azure;
+        width: fit-content;
+        font-stretch: extra-expanded;
+      }
+      #f
+      {
+        padding: 10px;
+        font-family: 'Oswald', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        background-color: rgb(53, 52, 52);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        color: azure;
+        width: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+      <div class="inputDiv">
+        <label>Celcius</label><br>
+        <input type="text" value="0" id="cel" class="inp">
+      </div>
+      <span id="equals">=</span>
+      <div class="inputDiv">
+        <label for="fah">Fahrenhiet</label><br>
+        <input type="text" value="32" id="fah" class="inp">
+      </div><br>
+      <span id="f">FORMULA:</span>
+      <span id="formula"></span>
+    </div>
+
+    <script>
+      var cel = document.getElementById("cel");
+      var fah = document.getElementById("fah");
+      var formula = document.getElementById("formula");
+
+      cel.addEventListener('input', function(){
+        let c = this.value;
+        let f = (c * (9/5)) + 32;
+        if(!Number.isInteger(f))
+        {
+          f = f.toFixed(4);
+        }
+        fah.value = f;
+        formula.innerHTML = `(${this.value}°C * (9/5)) + 32 = ${f}°F`;
+      });
+
+      fah.addEventListener('input', function(){
+        let f = this.value;
+        let c = (f - 32) * (5/9);
+        if(!Number.isInteger(c))
+        {
+          c = c.toFixed(4);
+        }
+        cel.value = c;
+        formula.innerHTML = `(${this.value}°F -32 ) * 5/9 = ${c}°C`;
+      })
+    </script>
+  </body>
+</html>
